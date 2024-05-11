@@ -6,7 +6,14 @@ using System.Threading.Tasks;
 
 namespace Project_Revin_InternetShop.Enum
 {
-    internal class Category
+    public enum Category
     {
+        All = 0,
+        Action,
+        Fighting,
+        RPG,
+        Simulation,
+        Strategy,
+        Shooter,
     }
 }

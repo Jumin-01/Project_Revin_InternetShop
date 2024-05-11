@@ -12,18 +12,22 @@ namespace Project_Revin_InternetShop.Lists
     {
         
         private Category category;
-        private List<Game> game = new List<Game>();
+        private List<Game> games = new List<Game>();
         public Catalog()
         {
 
+        }
+        public List<Game> Game
+        {
+            get { return games; }
         }
         public Catalog(Category cat)
         {
             Category = cat;
         }
-        public Catalog(Category cat, List<Game> game)
+        public Catalog(Category cat, List<Game> game) : this(cat)
         {
-
+            games = game;
         }
 
         public Category Category
@@ -38,7 +42,6 @@ namespace Project_Revin_InternetShop.Lists
         }
         public override void RemoveGame(Game game)
         {
-
             throw new NotImplementedException();
         }
     }
