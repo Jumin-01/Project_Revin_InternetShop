@@ -79,11 +79,35 @@ namespace Project_Revin_InternetShop.Users
 
         public void BuyGame(Game game)
         {
-            throw new NotImplementedException();
+            if (game == null)
+            {
+                throw new ArgumentNullException(nameof(game), "Game cannot be null.");
+            }
+
+            if (game.Price < 0)
+            {
+                throw new ArgumentException("Game price cannot be negative.", nameof(game));
+            }
+
+            if (_balance >= game.Price)
+            {
+                _balance -= game.Price;
+                library.AddGame(game);
+            }
+            else
+            {
+                throw new InvalidOperationException("Insufficient funds to buy the game.");
+            }
+           
         }
         public void ReplenishBalance(int amount)
         {
-            throw new NotImplementedException();
+            if (amount < 0)
+            {
+                throw new ArgumentException("Amount to add cannot be negative.", nameof(amount));
+            }
+            _balance += amount;
+           
         }
 
     }

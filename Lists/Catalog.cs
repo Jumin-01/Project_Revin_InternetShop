@@ -10,7 +10,7 @@ namespace Project_Revin_InternetShop.Lists
 {
     public class Catalog : Collections
     {
-        
+
         private Category category;
         private List<Game> games = new List<Game>();
         public Catalog()
@@ -38,11 +38,33 @@ namespace Project_Revin_InternetShop.Lists
 
         public override void AddGame(Game game)
         {
-            throw new NotImplementedException();
+            if (game == null)
+            {
+                throw new ArgumentNullException(nameof(game), "Game cannot be null.");
+            }
+
+            if (games.Contains(game))
+            {
+                throw new InvalidOperationException("The game is already in the library.");
+            }
+
+            games.Add(game);
+            
         }
         public override void RemoveGame(Game game)
         {
-            throw new NotImplementedException();
+            if (game == null)
+            {
+                throw new ArgumentNullException(nameof(game), "Game cannot be null.");
+            }
+
+            if (!games.Contains(game))
+            {
+                throw new InvalidOperationException("The game is not found in the library.");
+            }
+
+            games.Remove(game);
+            
         }
     }
 }

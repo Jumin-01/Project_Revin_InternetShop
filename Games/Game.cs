@@ -21,9 +21,9 @@ namespace Project_Revin_InternetShop.Games
         private List<string> _images = new List<string>();
         private string _part;
         private Category _category;
-        public  bool Itinstai { get; set; }
+        public bool Itinstai { get; set; }
 
-        public Game() 
+        public Game()
         {
             Count++;
             id = Count + 1;
@@ -72,10 +72,11 @@ namespace Project_Revin_InternetShop.Games
             get { return _rating; }
             set
             {
-                if (value<=5)
+                if (value <= 5)
                 {
-                 _rating = value;
-                }else _rating = 5;
+                    _rating = value;
+                }
+                else _rating = 5;
             }
         }
         public int Price
@@ -94,37 +95,81 @@ namespace Project_Revin_InternetShop.Games
 
         public void AddImage(string image)
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrEmpty(image))
+            {
+                throw new ArgumentException("Зображення не може бути пустим або null.");
+            }
+            if (!_images.Contains(image))
+            {
+                _images.Add(image);
+            }
+            else
+            {
+                throw new ArgumentException("Таке зображення вже додано.");
+            }
         }
 
         public void RemoveImage(string image)
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrEmpty(image))
+            {
+                throw new ArgumentException("Зображення не може бути пустим або null.");
+            }
+            if (_images.Contains(image))
+            {
+                _images.Remove(image);
+            }
+            else
+            {
+                throw new ArgumentException("Зображення, яке ви хочете видалити, не існує в списку.");
+            }
         }
 
         public List<string> GetImages()
         {
-            throw new NotImplementedException();
+            return new List<string>(_images);
         }
 
         public object Clone()
         {
-            throw new NotImplementedException();
+            Game clonedGame = new Game(Version, Name, Publisher, Rating, Price, Description, Part, Category);
+            clonedGame._images = new List<string>(_images); // Глибока копія списку зображень
+            return clonedGame;
         }
 
 
         public void Launch()
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrEmpty(_part))
+            {
+                throw new InvalidOperationException("Шлях до виконуваного файлу не встановлено.");
+            }
+
+            try
+            {
+                Process.Start(_part);
+            }
+            catch (Exception ex)
+            {
+                throw new InvalidOperationException($"Помилка під час запуску програми: {ex.Message}", ex);
+            }
         }
         public void Install()
         {
-            throw new NotImplementedException();
+            if (Itinstai)
+            {
+                throw new InvalidOperationException("Гра вже встановлена.");
+            }
+            Itinstai = true;
         }
 
         public void Uninstall()
         {
-            throw new NotImplementedException();
+            if (!Itinstai)
+            {
+                throw new InvalidOperationException("Гра не була встановлена.");
+            }
+            Itinstai = false;
         }
     }
 }
