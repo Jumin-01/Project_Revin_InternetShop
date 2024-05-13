@@ -1,15 +1,17 @@
-﻿using Project_Revin_InternetShop.Enum;
+using Newtonsoft.Json;
+using Project_Revin_InternetShop.Enum;
 using Project_Revin_InternetShop.Games;
 using Project_Revin_InternetShop.Lists;
 using Project_Revin_InternetShop.Users;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Project_Revin_InternetShop.Shop
+namespace Project_Revin_InternetShop.Shops
 {
     public class Shop
     {
@@ -39,7 +41,7 @@ namespace Project_Revin_InternetShop.Shop
             Dictionary<Category, Catalog> catalogMap = new Dictionary<Category, Catalog>();
 
             // Створення каталогу для кожної категорії
-            foreach (Category category in Category.GetValues(typeof(Category)))
+            foreach (Category category in System.Enum.GetValues(typeof(Category)))
             {
                 catalogMap[category] = new Catalog(category);
             }
@@ -78,7 +80,7 @@ namespace Project_Revin_InternetShop.Shop
             Dictionary<Category, Catalog> catalogMap = new Dictionary<Category, Catalog>();
 
             // Створення каталогу для кожної категорії
-            foreach (Category category in Category.GetValues(typeof(Category)))
+            foreach (Category category in System.Enum.GetValues(typeof(Category)))
             {
                 catalogMap[category] = new Catalog(category);
             }
@@ -192,7 +194,7 @@ namespace Project_Revin_InternetShop.Shop
                 }
             }
             else Notify?.Invoke("Add failed: We don't have enough powers");
-            
+
         }
 
         public void RemoveGame(Game game)
@@ -215,7 +217,7 @@ namespace Project_Revin_InternetShop.Shop
                 }
             }
             else Notify?.Invoke("Remove failed: We don't have enough powers");
-           
+
         }
         public List<Game> SearchGame(string query)
         {
@@ -235,9 +237,28 @@ namespace Project_Revin_InternetShop.Shop
             var selectedGames = games.Where(matchCriteria).ToList();
 
             return selectedGames;
-            
+
+        }
+        public void SaveToJson(string fileName)
+        {
+            string filePath = Path.Combine(Directory.GetCurrentDirectory(), fileName) + ".json";
+            string json = JsonConvert.SerializeObject(this, Formatting.Indented);
+            File.WriteAllText(filePath, json);
+            Notify?.Invoke($"Shop data saved to JSON file at {filePath}.");
         }
 
+        public static Shop LoadFromJson(string fileName)
+        {
+            string filePath = Path.Combine(Directory.GetCurrentDirectory(), fileName) + ".json";
 
+            if (!File.Exists(filePath))
+            {
+                throw new FileNotFoundException("File not found.", filePath);
+            }
+
+            string json = File.ReadAllText(filePath);
+            Shop shop = JsonConvert.DeserializeObject<Shop>(json);
+            return shop;
+        }
     }
 }
