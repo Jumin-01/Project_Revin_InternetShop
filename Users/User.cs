@@ -89,7 +89,7 @@ namespace Project_Revin_InternetShop.Users
                 throw new ArgumentException("Game price cannot be negative.", nameof(game));
             }
 
-            if (_balance >= game.Price && !Library.Game.Contains(game))
+            if (_balance >= game.Price)
             {
                 _balance -= game.Price;
                 library.AddGame(game);
