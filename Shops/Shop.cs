@@ -1,20 +1,22 @@
-﻿using Project_Revin_InternetShop.Enum;
+﻿using Newtonsoft.Json;
+using Project_Revin_InternetShop.Enum;
 using Project_Revin_InternetShop.Games;
 using Project_Revin_InternetShop.Lists;
 using Project_Revin_InternetShop.Users;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Project_Revin_InternetShop.Shop
+namespace Project_Revin_InternetShop.Shops
 {
     public class Shop
     {
         public delegate void PrintHandler(string message);
-        event PrintHandler Notify;
+        public event PrintHandler Notify;
         public static int CountUser { get; set; }
         public User authorizedUser { get; set; } = null;
 
@@ -39,7 +41,7 @@ namespace Project_Revin_InternetShop.Shop
             Dictionary<Category, Catalog> catalogMap = new Dictionary<Category, Catalog>();
 
             // Створення каталогу для кожної категорії
-            foreach (Category category in Category.GetValues(typeof(Category)))
+            foreach (Category category in System.Enum.GetValues(typeof(Category)))
             {
                 catalogMap[category] = new Catalog(category);
             }
@@ -78,7 +80,7 @@ namespace Project_Revin_InternetShop.Shop
             Dictionary<Category, Catalog> catalogMap = new Dictionary<Category, Catalog>();
 
             // Створення каталогу для кожної категорії
-            foreach (Category category in Category.GetValues(typeof(Category)))
+            foreach (Category category in System.Enum.GetValues(typeof(Category)))
             {
                 catalogMap[category] = new Catalog(category);
             }
@@ -160,7 +162,7 @@ namespace Project_Revin_InternetShop.Shop
                 throw new ArgumentException("Username or password cannot be null or empty.");
             }
 
-            User user = users.FirstOrDefault(x => x.Username.Equals(regUsername) && x.Password == regPassword);
+            User user = users.FirstOrDefault(x => x.Username.Equals(regUsername) && x.Password.Equals(regPassword));
             if (user != null)
             {
                 authorizedUser = user;
@@ -171,7 +173,15 @@ namespace Project_Revin_InternetShop.Shop
                 Notify?.Invoke("Authorization failed: invalid username or password");
             }
         }
+        public void LogOut()
+        {
+            if (authorizedUser !=null)
+            {
+                authorizedUser = null;
+                Notify?.Invoke("User logout");
+            } else Notify?.Invoke("User not log in");
 
+        }
         public void AddGame(Game game)
         {
             if (authorizedUser.Root)
@@ -184,6 +194,7 @@ namespace Project_Revin_InternetShop.Shop
                 if (!games.Contains(game))
                 {
                     games.Add(game);
+                     UpdateCatalog();
                     Notify?.Invoke($"Game {game.Name} successfully added.");
                 }
                 else
@@ -192,7 +203,7 @@ namespace Project_Revin_InternetShop.Shop
                 }
             }
             else Notify?.Invoke("Add failed: We don't have enough powers");
-            
+            UpdateCatalog();
         }
 
         public void RemoveGame(Game game)
@@ -204,9 +215,10 @@ namespace Project_Revin_InternetShop.Shop
                     throw new ArgumentNullException(nameof(game), "Game cannot be null.");
                 }
 
-                if (games.Contains(game))
+                if (games.FirstOrDefault(g => g.Name == game.Name) != null)
                 {
                     games.Remove(game);
+                    UpdateCatalog();
                     Notify?.Invoke($"Game {game.Name} successfully removed.");
                 }
                 else
@@ -215,14 +227,14 @@ namespace Project_Revin_InternetShop.Shop
                 }
             }
             else Notify?.Invoke("Remove failed: We don't have enough powers");
-           
+
         }
         public List<Game> SearchGame(string query)
         {
             // Перевірка, що строка запиту не є null або пустою
             if (string.IsNullOrWhiteSpace(query))
             {
-                throw new ArgumentException("Search query cannot be null or empty.", nameof(query));
+                throw new ArgumentException("Search query cannot be null or empty.");
             }
 
             // Приведення запиту до нижнього регістру один раз перед пошуком
@@ -235,9 +247,28 @@ namespace Project_Revin_InternetShop.Shop
             var selectedGames = games.Where(matchCriteria).ToList();
 
             return selectedGames;
-            
+
+        }
+        public void SaveToJson(string fileName)
+        {
+            string filePath = Path.Combine(Directory.GetCurrentDirectory(), fileName) + ".json";
+            string json = JsonConvert.SerializeObject(this, Formatting.Indented);
+            File.WriteAllText(filePath, json);
+            Notify?.Invoke($"Shop data saved to JSON file at {filePath}.");
         }
 
+        public static Shop LoadFromJson(string fileName)
+        {
+            string filePath = Path.Combine(Directory.GetCurrentDirectory(), fileName) + ".json";
 
+            if (!File.Exists(filePath))
+            {
+                throw new FileNotFoundException("File not found.", filePath);
+            }
+
+            string json = File.ReadAllText(filePath);
+            Shop shop = JsonConvert.DeserializeObject<Shop>(json);
+            return shop;
+        }
     }
 }

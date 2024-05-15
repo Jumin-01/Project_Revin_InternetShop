@@ -41,7 +41,7 @@ namespace Project_Revin_InternetShop.Games
             Part = part;
             Category = category;
         }
-
+        public List<string> GetImages { get { return _images; } }
         public double Version
         {
             get { return _version; }
@@ -125,10 +125,7 @@ namespace Project_Revin_InternetShop.Games
             }
         }
 
-        public List<string> GetImages()
-        {
-            return new List<string>(_images);
-        }
+       
 
         public object Clone()
         {

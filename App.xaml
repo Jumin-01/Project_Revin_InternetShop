@@ -4,6 +4,10 @@
              xmlns:local="clr-namespace:Project_Revin_InternetShop"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <Style x:Key="TransparentTextBoxStyle" TargetType="TextBox">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Foreground" Value="Black"/>
+        </Style>
     </Application.Resources>
 </Application>
