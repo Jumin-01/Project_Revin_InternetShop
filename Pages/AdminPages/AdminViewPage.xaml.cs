@@ -12,6 +12,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Effects;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -23,6 +24,7 @@ namespace Project_Revin_InternetShop.Pages.AdminPages
     /// </summary>
     public partial class AdminViewPage : Page
     {
+        Style customStyle = System.Windows.Application.Current.FindResource("CustomLabelStyle") as Style;
         AdminGamePage gamePage;
         private MainWindow mainWindow;
         public AdminViewPage(MainWindow mainWindow)
@@ -47,10 +49,11 @@ namespace Project_Revin_InternetShop.Pages.AdminPages
         }
         public Grid CreateCustomGrid(Catalog catalog)
         {
+            
             // Створення Grid
             Grid dynamicGrid = new Grid
             {
-                Background = new SolidColorBrush(ColorConverter.ConvertFromString("#FF2E2E2E") as Color? ?? Colors.Red),
+                Background = new SolidColorBrush(ColorConverter.ConvertFromString("#FF292D38") as Color? ?? Colors.Red),
                 Margin = new Thickness(0, 10, 0, 0),
                 Height = 200
             };
@@ -64,6 +67,7 @@ namespace Project_Revin_InternetShop.Pages.AdminPages
             {
                 Content = catalog.Category,
                 FontSize = 20,
+                Style = customStyle,
                 VerticalAlignment = VerticalAlignment.Stretch,
                 Margin = new Thickness(10, 5, 0, 0)
             };
@@ -107,28 +111,39 @@ namespace Project_Revin_InternetShop.Pages.AdminPages
                 } 
                     itemGrid.Children.Add(image);
 
-                // Label for Name
+                Grid BlurGrid = new Grid { Width = 100, Height= 60,  VerticalAlignment= VerticalAlignment.Bottom, HorizontalAlignment = HorizontalAlignment.Stretch , Background = new SolidColorBrush(Color.FromArgb(150, 86, 81, 74)) };
+                BlurEffect blurEffect = new BlurEffect
+                {
+                    Radius = 5
+                };
+                BlurGrid.Effect = blurEffect;
+                itemGrid.Children.Add(BlurGrid);
                 Label nameLabel = new Label
                 {
+                    Style = customStyle,
                     Content = game.Name,
                     Height = 30,
                     VerticalAlignment = VerticalAlignment.Bottom,
-                    Margin = new Thickness(0, 0, 0, 50),
+                    Margin = new Thickness(0, 0, 0, 20),
                     HorizontalContentAlignment = HorizontalAlignment.Center,
-                    Background = Brushes.AliceBlue
+                    
                 };
                 itemGrid.Children.Add(nameLabel);
-
-                // Label for Price
                 Label priceLabel = new Label
                 {
-                    Content = game.Price,
-                    Height = 30,
+                    Style = customStyle,
+                    Content = game.Price + " $",
+                    Background = new SolidColorBrush(Color.FromArgb(100, 39, 39, 39)),
+                    Padding = new Thickness(4),
                     VerticalAlignment = VerticalAlignment.Bottom,
-                    Margin = new Thickness(0, 0, 0, 5),
+                    HorizontalAlignment= HorizontalAlignment.Right,
+                    Margin = new Thickness(0, 0, 5, 5),
                     HorizontalContentAlignment = HorizontalAlignment.Center
                 };
                 itemGrid.Children.Add(priceLabel);
+               
+              
+
 
                 // Додавання Grid до StackPanel
                 panel.Children.Add(itemGrid);

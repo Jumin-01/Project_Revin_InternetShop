@@ -23,6 +23,8 @@ namespace Project_Revin_InternetShop.Pages
     /// </summary>
     public partial class LibraryPage : Page
     {
+        Style customLabelStyle = System.Windows.Application.Current.FindResource("CustomLabelStyle") as Style;
+        Style customButtonStyle = System.Windows.Application.Current.FindResource("ButtonStyle") as Style;
         GamePage gamePage;
         private MainWindow mainWindow;
         public LibraryPage(MainWindow mainWindow)
@@ -33,6 +35,7 @@ namespace Project_Revin_InternetShop.Pages
         }
         public void CreateLibraryGrid()
         {
+
             if (mainWindow.GetShop.authorizedUser != null)
             {
 
@@ -43,8 +46,9 @@ namespace Project_Revin_InternetShop.Pages
                     Grid itemGrid = new Grid
                     {
                         Height = 80,
-                        Background = Brushes.Silver,
+                        Background = new SolidColorBrush(ColorConverter.ConvertFromString("#FF292D38") as Color? ?? Colors.Red),
                         Margin = new Thickness(0, 10, 0, 0)
+                        
                     };
 
                     itemGrid.Tag = game;  // Зберігаємо гру в Tag для доступу в обробнику події
@@ -62,7 +66,7 @@ namespace Project_Revin_InternetShop.Pages
                     itemGrid.Children.Add(image);
 
                     // Button
-                    Button button = new Button { Height = 30, Margin = new Thickness(0, 0, 10, 0) };
+                    Button button = new Button { Height = 30, Margin = new Thickness(0, 0, 10, 0), Style = customButtonStyle};
                     button.Tag = game;
                     button.Click += Button_Click;
 
@@ -73,6 +77,7 @@ namespace Project_Revin_InternetShop.Pages
                     // Label for Name
                     Label nameLabel = new Label
                     {
+                        Style = customLabelStyle,
                         Content = game.Name,
                         HorizontalAlignment = HorizontalAlignment.Left,
                         VerticalAlignment = VerticalAlignment.Top,
@@ -84,6 +89,7 @@ namespace Project_Revin_InternetShop.Pages
                     // Label for Publisher
                     Label publisherLabel = new Label
                     {
+                        Style = customLabelStyle,
                         Content = game.Publisher,
                         HorizontalAlignment = HorizontalAlignment.Left,
                         VerticalAlignment = VerticalAlignment.Top,

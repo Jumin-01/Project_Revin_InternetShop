@@ -30,7 +30,7 @@ namespace Project_Revin_InternetShop.Lists
                 throw new ArgumentNullException(nameof(game), "Game cannot be null.");
             }
 
-            if (games.Contains(game))
+            if (games.FirstOrDefault(g => g.Name == game.Name) != null)
             {
                 throw new InvalidOperationException("The game is already in the library.");
             }

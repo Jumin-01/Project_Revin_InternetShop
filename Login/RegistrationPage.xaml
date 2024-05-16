@@ -7,18 +7,18 @@
       mc:Ignorable="d"
       Title="RegistrationPage" Width="400" Height="450">
 
-    <Grid Width="400" Height="450" Background="#FFFCFCFC">
-        <Label Content="Авторизуватися" HorizontalAlignment="Left" Margin="144,390,0,0" VerticalAlignment="Top" MouseLeftButtonDown="ClickLabelReg"/>
-        <TextBox x:Name="FirstNameTB" HorizontalAlignment="Center" Margin="0,125,0,0" TextWrapping="Wrap" Text="Firstname" VerticalAlignment="Top" Width="250" Height="30"/>
-        <TextBox x:Name="LastNameTB" HorizontalAlignment="Center" Margin="0,180,0,0" TextWrapping="Wrap" Text="Lastname" VerticalAlignment="Top" Width="250" Height="30" />
-        <TextBox x:Name="UserNameTB" HorizontalAlignment="Center" Margin="0,70,0,0" TextWrapping="Wrap" Text="Username" VerticalAlignment="Top" Width="250" Height="30"/>
-        <Button Content="Sing up" HorizontalAlignment="Left" Margin="122,344,0,0" VerticalAlignment="Top" Width="144" Click="Button_Click"/>
+    <Grid Width="400" Height="450" Background="#FF292D38">
+        <Label Content="Авторизуватися" HorizontalAlignment="Left" Margin="144,390,0,0" VerticalAlignment="Top" MouseLeftButtonDown="ClickLabelReg" Foreground="#FF00A3FF"/>
+        <TextBox x:Name="FirstNameTB" HorizontalAlignment="Center" Margin="0,125,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="250" Height="30"/>
+        <TextBox x:Name="LastNameTB" HorizontalAlignment="Center" Margin="0,180,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="250" Height="30" />
+        <TextBox x:Name="UserNameTB" HorizontalAlignment="Center" Margin="0,70,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="250" Height="30"/>
+        <Button Content="Sing up" HorizontalAlignment="Left" Margin="122,344,0,0" VerticalAlignment="Top" Width="144" Click="Button_Click" Style="{StaticResource ButtonStyle}"/>
         <PasswordBox x:Name="PasswordTB" HorizontalAlignment="Center" Margin="0,235,0,0"   VerticalAlignment="Top" Width="250" Height="30"/>
-        <Label Content="firstname" HorizontalAlignment="Left" Height="25" Margin="75,105,0,0" VerticalAlignment="Top" FontSize="10" />
-        <Label Content="lastname" HorizontalAlignment="Left" Height="25" Margin="75,160,0,0" VerticalAlignment="Top" FontSize="10" />
-        <Label Content="username" HorizontalAlignment="Left" Height="25" Margin="75,50,0,0" VerticalAlignment="Top" FontSize="10" />
-        <Label Content="password" HorizontalAlignment="Left" Height="25" Margin="75,215,0,0" VerticalAlignment="Top" FontSize="10" />
+        <Label Content="firstname" HorizontalAlignment="Left" Height="25" Margin="75,105,0,0" VerticalAlignment="Top" FontSize="10"  Style="{StaticResource CustomLabelStyle}"/>
+        <Label Content="lastname" HorizontalAlignment="Left" Height="25" Margin="75,160,0,0" VerticalAlignment="Top" FontSize="10" Style="{StaticResource CustomLabelStyle}"/>
+        <Label Content="username" HorizontalAlignment="Left" Height="25" Margin="75,50,0,0" VerticalAlignment="Top" FontSize="10" Style="{StaticResource CustomLabelStyle}"/>
+        <Label Content="password" HorizontalAlignment="Left" Height="25" Margin="75,215,0,0" VerticalAlignment="Top" FontSize="10" Style="{StaticResource CustomLabelStyle}"/>
 
-        <CheckBox x:Name="RootCB" Content="Admin" HorizontalAlignment="Left" Margin="86,286,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="RootCB" Content="Admin" HorizontalAlignment="Left" Margin="86,286,0,0" VerticalAlignment="Top" Foreground="White"/>
     </Grid>
 </Page>

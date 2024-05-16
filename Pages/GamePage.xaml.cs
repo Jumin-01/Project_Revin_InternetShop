@@ -58,6 +58,8 @@ namespace Project_Revin_InternetShop.Pages
                     {
                         mainWindow.GetShop.authorizedUser.BuyGame(game);
                         mainWindow.UpdateUserLabel();
+                        mainWindow.GetShop.SaveToJson("Shop");
+
                     }
                     catch (Exception ex)
                     {
@@ -71,7 +73,7 @@ namespace Project_Revin_InternetShop.Pages
                 {
                     game.Launch();
                 }
-                else game.Install();
+                else { game.Install(); mainWindow.GetShop.SaveToJson("Shop"); }
 
                 CheckButtonText(ref GameButton);
             }
@@ -90,8 +92,8 @@ namespace Project_Revin_InternetShop.Pages
                     but.Content = "Play";
                 }
                 else but.Content = "Instal";
-            }
-            
+            }else but.Content = "Bay";
+
         }
     }
 }

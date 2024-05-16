@@ -14,7 +14,7 @@
 
             </StackPanel>
         </ScrollViewer>
-        <Button x:Name="AddGameButton" Content="Add" Height="50" Width="100" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,10,40,0" FontSize="16" Click="AddGameButton_Click"></Button>
+        <Button x:Name="AddGameButton" Content="Add" Height="50" Width="100" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,10,40,0" FontSize="16" Click="AddGameButton_Click" Style="{StaticResource ButtonStyle}"></Button>
 
 
     </Grid>

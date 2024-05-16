@@ -7,7 +7,20 @@
         <Style x:Key="TransparentTextBoxStyle" TargetType="TextBox">
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Foreground" Value="White"/>
             <Setter Property="Foreground" Value="Black"/>
+        </Style>
+        <Style x:Key="CustomLabelStyle" TargetType="Label">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Padding" Value="0"/>
+           
+        </Style>
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="#FF4F5973"/>
+            <Setter Property="Background" Value="#FF1C2334"/>
+           
         </Style>
     </Application.Resources>
 </Application>

@@ -12,7 +12,7 @@
         <ScrollViewer>
             <StackPanel>
 
-                <Grid Height="200" Background="#FFFDCCCC" Margin="0,10,0,0">
+                <Grid Height="200" Background="#FF292D38" Margin="0,10,0,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="200"/>
                         <ColumnDefinition Width="*"/>
@@ -32,12 +32,12 @@
                                 <ColumnDefinition Width="100"/>
                                 <ColumnDefinition Width="150"/>
                             </Grid.ColumnDefinitions>
-                            <Button x:Name="GameButton" Grid.Column="2" Content="Save" HorizontalAlignment="Center" Height="30" Width="100" Margin="0,0,40,0" Click="Button_Click"/>
-                            <Label x:Name="PriceLabel" Grid.Column="1" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Right"  />
+                            <Button x:Name="GameButton" Grid.Column="2" Content="Bau" HorizontalAlignment="Center" Height="30" Width="100" Margin="0,0,40,0" Click="Button_Click" Style="{StaticResource ButtonStyle}"/>
+                            <Label x:Name="PriceLabel" Grid.Column="1" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Right" Style="{StaticResource CustomLabelStyle}" />
 
                         </Grid>
-                        <Label x:Name="NameLabel" Grid.Row="0" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Left" Content="Name" />
-                        <Label x:Name="PublisherLabel" Grid.Row="1" FontSize="10" VerticalAlignment="Center" HorizontalAlignment="Left" Content="Publisher" />
+                        <Label x:Name="NameLabel" Grid.Row="0" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Left" Content="Name" Style="{StaticResource CustomLabelStyle}"/>
+                        <Label x:Name="PublisherLabel" Grid.Row="1" FontSize="10" VerticalAlignment="Center" HorizontalAlignment="Left" Content="Publisher" Style="{StaticResource CustomLabelStyle}"/>
                         <Grid Grid.Row="2">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="60"/>
@@ -51,12 +51,12 @@
                                 <RowDefinition />
 
                             </Grid.RowDefinitions>
-                            <Label Grid.Row="1" Grid.Column="0" Content="Version" FontSize="14" HorizontalAlignment="Center"/>
-                            <Label Grid.Row="1" Grid.Column="1" Content="Rating" FontSize="14" HorizontalAlignment="Center"/>
-                            <Label Grid.Row="1" Grid.Column="2" Content="Category" FontSize="14" HorizontalAlignment="Center"/>
-                            <Label x:Name="VersionLabel" Grid.Row="0" Grid.Column="0" FontSize="14" HorizontalAlignment="Center" Content="Version" />
-                            <Label x:Name="RatingLabel" Grid.Row="0" Grid.Column="1" FontSize="14" HorizontalAlignment="Center" Content="Rating" />
-                            <Label x:Name="CategoryLabel" Grid.Row="0" Grid.Column="2" FontSize="14" HorizontalAlignment="Center" Content="Category" />
+                            <Label Grid.Row="1" Grid.Column="0" Content="Version" FontSize="14" HorizontalAlignment="Center" Style="{StaticResource CustomLabelStyle}"/>
+                            <Label Grid.Row="1" Grid.Column="1" Content="Rating" FontSize="14" HorizontalAlignment="Center" Style="{StaticResource CustomLabelStyle}"/>
+                            <Label Grid.Row="1" Grid.Column="2" Content="Category" FontSize="14" HorizontalAlignment="Center" Style="{StaticResource CustomLabelStyle}"/>
+                            <Label x:Name="VersionLabel" Grid.Row="0" Grid.Column="0" FontSize="14" HorizontalAlignment="Center" Content="Version" Style="{StaticResource CustomLabelStyle}"/>
+                            <Label x:Name="RatingLabel" Grid.Row="0" Grid.Column="1" FontSize="14" HorizontalAlignment="Center" Content="Rating" Style="{StaticResource CustomLabelStyle}"/>
+                            <Label x:Name="CategoryLabel" Grid.Row="0" Grid.Column="2" FontSize="14" HorizontalAlignment="Center" Content="Category" Style="{StaticResource CustomLabelStyle}"/>
                         </Grid>
 
 
@@ -65,13 +65,13 @@
                 </Grid>
 
 
-                <Grid Background="#FFF19F9F" Margin="0,10,0,0">
+                <Grid Background="#FF292D38" Margin="0,10,0,0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="50"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <Label Grid.Row="0" Content="Description" FontSize="20" VerticalAlignment="Center"/>
-                    <TextBlock x:Name="DescriptionLabel" Grid.Row="1" FontSize="14"  Text="Description" TextWrapping="Wrap" />
+                    <Label Grid.Row="0" Content="Description" FontSize="20" VerticalAlignment="Center" Style="{StaticResource CustomLabelStyle}"/>
+                    <TextBlock x:Name="DescriptionLabel" Grid.Row="1" FontSize="14"  Text="Description" TextWrapping="Wrap" Foreground="White"/>
                 </Grid>
             </StackPanel>
         </ScrollViewer>

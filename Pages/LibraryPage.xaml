@@ -8,14 +8,14 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="LibraryPage" Background="Black" Foreground="#FF807E7E">
 
-    <Grid Background="#FF9E9C9C" >
+    <Grid Background="#FF272727" >
         <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="50"/>
                     <RowDefinition Height="100*"/>
                 </Grid.RowDefinitions>
-                <Label Grid.Row="0" Content="Бібліотека" HorizontalAlignment="Left" Margin="10,20,0,0" VerticalAlignment="Top" FontSize="20"/>
+                <Label Grid.Row="0" Content="Бібліотека" HorizontalAlignment="Left" Margin="10,5,0,0" VerticalAlignment="Top" FontSize="20" Style="{StaticResource CustomLabelStyle}"/>
                 <StackPanel x:Name="SPLibraryGame" Grid.Row="1">
                     
                 </StackPanel>

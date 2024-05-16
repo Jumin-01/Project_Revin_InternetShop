@@ -65,7 +65,9 @@ namespace Project_Revin_InternetShop.Pages.AdminPages
                     game = editedgame;
                     mainWindow.GetShop.UpdateCatalog();
                     UpdateData();
-                }else mainWindow.MessageShow("Please fill in all fields before saving.");
+                    mainWindow.GetShop.SaveToJson("Shop");
+                }
+                else mainWindow.MessageShow("Please fill in all fields before saving.");
             }
             catch (Exception ex)
             {
@@ -123,7 +125,7 @@ namespace Project_Revin_InternetShop.Pages.AdminPages
             else
             {
                 // Повернення порожнього масиву, якщо користувач скасував вибір
-                return new string[0];
+                return new string[1] { game.GetImages.First()};
             }
         }
         public string OpenLaunchFileDialog()
@@ -166,6 +168,7 @@ namespace Project_Revin_InternetShop.Pages.AdminPages
         {
             mainWindow.GetShop.RemoveGame(game);           
             mainWindow.OpenMainPages();
+            mainWindow.GetShop.SaveToJson("Shop");
         }
         
     }

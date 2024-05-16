@@ -8,13 +8,13 @@
       d:DesignHeight="450"
       Title="AutorizationPage" Width="400" Height="450" Background="Black" Foreground="#FFE3DDDD">
 
-    <Grid Width="400" Height="450" Background="#FFFAFAFA">
+    <Grid Width="400" Height="450" Background="#FF292D38">
         <TextBox x:Name="LoginTextBox" HorizontalAlignment="Left" Margin="69,127,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="250" Height="30"/>
-        <Button x:Name="Log_Button" Content="Sing in" HorizontalAlignment="Center" Margin="0,304,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.9,-1.009" Width="144" Click="Log_Button_Click"/>
-        <Label Content="Зареєструватись" HorizontalAlignment="Left" Margin="144,390,0,0" VerticalAlignment="Top" MouseLeftButtonDown="ClickLabel"/>
+        <Button x:Name="Log_Button" Content="Sing in" HorizontalAlignment="Center" Margin="0,304,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.9,-1.009" Width="144" Click="Log_Button_Click" Style="{StaticResource ButtonStyle}"/>
+        <Label Content="Зареєструватись" HorizontalAlignment="Left" Margin="144,390,0,0" VerticalAlignment="Top" MouseLeftButtonDown="ClickLabel" Foreground="#FF00A3FF" />
         <PasswordBox x:Name="PasswordBox" HorizontalAlignment="Left" Margin="69,199,0,0"   VerticalAlignment="Top" Width="250" Height="30"/>
-        <Label Content="Username" HorizontalAlignment="Left" Height="25" Margin="69,97,0,0" VerticalAlignment="Top" />
-        <Label Content="Password" HorizontalAlignment="Left" Height="25" Margin="69,169,0,0" VerticalAlignment="Top" />
+        <Label Content="Username" HorizontalAlignment="Left" Height="25" Margin="69,97,0,0" VerticalAlignment="Top" Style="{StaticResource CustomLabelStyle}"/>
+        <Label Content="Password" HorizontalAlignment="Left" Height="25" Margin="69,169,0,0" VerticalAlignment="Top" Style="{StaticResource CustomLabelStyle}"/>
 
     </Grid>
 </Page>

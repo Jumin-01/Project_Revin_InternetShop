@@ -43,6 +43,7 @@ namespace Project_Revin_InternetShop
             InitializeComponent();
 
             shop.Notify += MessageShow;
+            //shop.Registration("jumin", "Revin", "Veniamin", "qwerty", false);
             //shop.Registration("admin", "Admin", "User", "password123", true);
             //shop.Authorization("admin", "password123");
             //shop.authorizedUser.ReplenishBalance(500);
@@ -83,12 +84,13 @@ namespace Project_Revin_InternetShop
         public void Registration(User user)
         {
             shop.Registration(user.Username, user.Firstname, user.Lastname, user.Password, user.Root);
-            
+            shop.SaveToJson("Shop");
         }
         public void LogIn(string username, string pass)
         {
             shop.Authorization(username, pass);
             UpdateUserLabel();
+            shop.SaveToJson("Shop");
         }
         public void UpdateUserLabel() 
         {
@@ -173,7 +175,9 @@ namespace Project_Revin_InternetShop
         private void OutButo_click(object sender, RoutedEventArgs e)
         {
             shop.LogOut();
+            OpenMainPages();
             UpdateUserLabel();
+            shop.SaveToJson("Shop");
         }
 
         private void ReplenishBalanceBut_Click(object sender, RoutedEventArgs e)
@@ -186,6 +190,7 @@ namespace Project_Revin_InternetShop
                 shop.authorizedUser.ReplenishBalance(bal);
                 UpdateUserLabel();
                 ReplenishBalanceTB.Text = "";
+                shop.SaveToJson("Shop");
             }
 
             

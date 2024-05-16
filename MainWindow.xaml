@@ -17,11 +17,11 @@
         </Grid.RowDefinitions>
         <Frame x:Name="ViewFrame" Grid.Column="1"  Grid.Row="1"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" NavigationUIVisibility="Hidden" Background="#FF272727"/>
         <StackPanel Grid.Column="0" Grid.Row="1" >
-            <Button x:Name="HomeButton" Width="50" Height="50" Click="HomeButton_Click" >Main</Button>
-            <Button x:Name="LibraryButton" Width="50" Height="50" Click="LibraryButton_Click" Margin="0,5,0,0" >Library</Button>
+            <Button x:Name="HomeButton" Width="50" Height="50" Click="HomeButton_Click" Style="{StaticResource ButtonStyle}">Main</Button>
+            <Button x:Name="LibraryButton" Width="50" Height="50" Click="LibraryButton_Click" Margin="0,5,0,0" Style="{StaticResource ButtonStyle}">Library</Button>
         </StackPanel>
         <StackPanel Grid.Column="1" Orientation="Horizontal">
-            <TextBox x:Name="SearchBox" HorizontalAlignment="Center" VerticalAlignment="Center" Width="300" Margin="5,0,0,0" TextChanged="TextChange" Height="25" FontSize="14" Background="#FF454545"/>
+            <TextBox x:Name="SearchBox" HorizontalAlignment="Center" VerticalAlignment="Center" Width="300" Margin="5,0,0,0" TextChanged="TextChange" Height="25" FontSize="14" Background="#FF454545" Foreground="White"/>
             <Button x:Name="ProfileButton" Width="30" Height="30" Margin="10,0,0,0" Click="ProfileButton_Click" Foreground="White" Background="#FF323232" >
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
@@ -32,18 +32,27 @@
                     </ControlTemplate>
                 </Button.Template>
             </Button>
+            
             <Popup x:Name="MyPopup" Placement="Bottom" PlacementTarget="{Binding ElementName=ProfileButton}" StaysOpen="False">
-                <Border Width="200" Height="150" Background="#FFD4D4D4">
-                    <Grid>
-                        <Button x:Name="LogButo" Content="Log in" VerticalAlignment="Bottom" Margin="5,5,5,30" Click="LogButo_Click"/>
-                        <Button x:Name="OutButo" Content="Log out" VerticalAlignment="Bottom" Margin="5" Click="OutButo_click"/>
-                        <Button x:Name="ReplenishBalanceBut" Content="Replenish Balance" VerticalAlignment="Bottom" Margin="75,5,5,60" Click="ReplenishBalanceBut_Click"/>
-                        <TextBox x:Name="ReplenishBalanceTB"  VerticalAlignment="Bottom" Margin="5,5,5,60" Width="75" Height="20" HorizontalAlignment="Left" />
 
-                        <Label x:Name="UserLabel"  Margin="10,0,0,0" FontSize="10" VerticalAlignment="Top"/>
+                <Border Width="200" Height="150">
+                    <Border.Background>
+                        <SolidColorBrush Color="#7FB4C0DF" Opacity="0.6"/>
+                    
+                    </Border.Background>
+                    <Grid>
+                        <Button x:Name="LogButo" Content="Log in" VerticalAlignment="Bottom" Margin="5,5,5,30" Click="LogButo_Click" Style="{StaticResource ButtonStyle}"/>
+                        <Button x:Name="OutButo" Content="Log out" VerticalAlignment="Bottom" Margin="5" Click="OutButo_click" Style="{StaticResource ButtonStyle}"/>
+                        <Button x:Name="ReplenishBalanceBut" Content="Replenish Balance" VerticalAlignment="Bottom" Margin="75,5,5,60" Click="ReplenishBalanceBut_Click" Style="{StaticResource ButtonStyle}"/>
+                        <TextBox x:Name="ReplenishBalanceTB"  VerticalAlignment="Bottom" Margin="5,5,5,60" Width="75" Height="20" HorizontalAlignment="Left"  />
+
+                        <Label x:Name="UserLabel"  Margin="10,0,0,0" FontSize="14" VerticalAlignment="Top" Style="{StaticResource CustomLabelStyle}"/>
 
                     </Grid>
                 </Border>
+                   
+                    
+                
             </Popup>
         </StackPanel>
 
