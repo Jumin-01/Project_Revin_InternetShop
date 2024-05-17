@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Project_Revin_InternetShop.Shop
+namespace Project_Revin_InternetShop.Shops
 {
     public class Shop
     {
