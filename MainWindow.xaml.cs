@@ -187,10 +187,14 @@ namespace Project_Revin_InternetShop
             {
                 int bal = 0;
                 int.TryParse(ReplenishBalanceTB.Text, out bal);
-                shop.authorizedUser.ReplenishBalance(bal);
-                UpdateUserLabel();
+                if (bal>=0)
+                {
+                    shop.authorizedUser.ReplenishBalance(bal);
+                    UpdateUserLabel();                   
+                    shop.SaveToJson("Shop");
+                }
                 ReplenishBalanceTB.Text = "";
-                shop.SaveToJson("Shop");
+
             }
 
             

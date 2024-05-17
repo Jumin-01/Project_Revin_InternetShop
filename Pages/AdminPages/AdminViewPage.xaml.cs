@@ -161,7 +161,7 @@ namespace Project_Revin_InternetShop.Pages.AdminPages
         {
             Game addgame = new Game();
             gamePage = new AdminGamePage(mainWindow, addgame);
-            mainWindow.GetShop.AddGame(addgame);
+            
             mainWindow.ViewFrame.Navigate(gamePage);
 
         }

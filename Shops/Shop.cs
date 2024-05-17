@@ -133,6 +133,7 @@ namespace Project_Revin_InternetShop.Shops
             Notify?.Invoke($"Game {gameToEdit.Name} successfully edited.");
             UpdateCatalog();
         }
+
         public void Registration(string regUsername, string regFirstname, string regLastname, string regPassword, bool root)
         {
             if (string.IsNullOrEmpty(regUsername) || string.IsNullOrEmpty(regFirstname) ||
@@ -154,7 +155,6 @@ namespace Project_Revin_InternetShop.Shops
 
             CountUser = users.Count;
         }
-
         public void Authorization(string regUsername, string regPassword)
         {
             if (string.IsNullOrEmpty(regUsername) || string.IsNullOrEmpty(regPassword))
@@ -175,13 +175,15 @@ namespace Project_Revin_InternetShop.Shops
         }
         public void LogOut()
         {
-            if (authorizedUser !=null)
+            if (authorizedUser != null)
             {
                 authorizedUser = null;
                 Notify?.Invoke("User logout");
-            } else Notify?.Invoke("User not log in");
+            }
+            else Notify?.Invoke("User not log in");
 
         }
+
         public void AddGame(Game game)
         {
             if (authorizedUser.Root)
@@ -194,7 +196,7 @@ namespace Project_Revin_InternetShop.Shops
                 if (!games.Contains(game))
                 {
                     games.Add(game);
-                     UpdateCatalog();
+                    UpdateCatalog();
                     Notify?.Invoke($"Game {game.Name} successfully added.");
                 }
                 else
@@ -205,7 +207,6 @@ namespace Project_Revin_InternetShop.Shops
             else Notify?.Invoke("Add failed: We don't have enough powers");
             UpdateCatalog();
         }
-
         public void RemoveGame(Game game)
         {
             if (authorizedUser.Root)
@@ -249,6 +250,7 @@ namespace Project_Revin_InternetShop.Shops
             return selectedGames;
 
         }
+
         public void SaveToJson(string fileName)
         {
             string filePath = Path.Combine(Directory.GetCurrentDirectory(), fileName) + ".json";

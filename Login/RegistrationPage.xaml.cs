@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -22,6 +23,7 @@ namespace Project_Revin_InternetShop.Login
     /// </summary>
     public partial class RegistrationPage : Page
     {
+        private const string RootPassword = "root";
         private MainWindow _mainWindow;
         private LoginWindow _loginWindow;
         public RegistrationPage(LoginWindow loginWindow, MainWindow mainWindow)
@@ -54,6 +56,30 @@ namespace Project_Revin_InternetShop.Login
             
 
 
+        }
+
+        private void EnterRootPass(object sender, RoutedEventArgs e)
+        {
+            if (RootPasTB.Text == RootPassword)
+            {
+                RootCB.IsChecked = true;
+
+            }
+            else {
+                RootCB.IsChecked = false;
+                 
+            }
+            
+                CBPopup.IsOpen = false;
+            RootPasTB.Text = "";
+        }
+
+        private void RootCB_Checked(object sender, RoutedEventArgs e)
+        {
+            
+            CBPopup.IsOpen = true;
+            
+            
         }
     }
 }

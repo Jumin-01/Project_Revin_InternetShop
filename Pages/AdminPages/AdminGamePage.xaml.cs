@@ -63,6 +63,7 @@ namespace Project_Revin_InternetShop.Pages.AdminPages
                     Game editedgame = game;
                     mainWindow.GetShop.EditGame(editGame, ref editedgame);
                     game = editedgame;
+                    mainWindow.GetShop.AddGame(game);
                     mainWindow.GetShop.UpdateCatalog();
                     UpdateData();
                     mainWindow.GetShop.SaveToJson("Shop");
@@ -89,14 +90,19 @@ namespace Project_Revin_InternetShop.Pages.AdminPages
         }
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            if (game.GetImages.Count > 0)
+            
+            string[] strImage = OpenImageFileDialog();
+            if (strImage.Length>=1)
             {
-                game.RemoveImage(game.GetImages.First().ToString());
+                game.GetImages.Clear();
+                game.AddImage(strImage[0]);
             }
-            foreach (var item in OpenImageFileDialog())
-            {
-                game.AddImage(item);
-            }
+            
+           
+            //if (game.GetImages.Count > 0)
+            //{
+            //    game.RemoveImage(game.GetImages.First().ToString());
+            //}
             UpdateData();
 
 
@@ -125,7 +131,7 @@ namespace Project_Revin_InternetShop.Pages.AdminPages
             else
             {
                 // Повернення порожнього масиву, якщо користувач скасував вибір
-                return new string[1] { game.GetImages.First()};
+                return new string[0];
             }
         }
         public string OpenLaunchFileDialog()

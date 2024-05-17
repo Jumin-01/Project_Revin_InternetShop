@@ -19,6 +19,19 @@
         <Label Content="username" HorizontalAlignment="Left" Height="25" Margin="75,50,0,0" VerticalAlignment="Top" FontSize="10" Style="{StaticResource CustomLabelStyle}"/>
         <Label Content="password" HorizontalAlignment="Left" Height="25" Margin="75,215,0,0" VerticalAlignment="Top" FontSize="10" Style="{StaticResource CustomLabelStyle}"/>
 
-        <CheckBox x:Name="RootCB" Content="Admin" HorizontalAlignment="Left" Margin="86,286,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <CheckBox x:Name="RootCB" Content="Admin" HorizontalAlignment="Left" Margin="86,286,0,0" VerticalAlignment="Top" Foreground="White" Checked="RootCB_Checked"/>
+        <Popup x:Name="CBPopup" Placement="Bottom" PlacementTarget="{Binding ElementName=RootCB}" StaysOpen="True">
+
+            <Border Width="200" Height="30">
+                <Border.Background>
+                    <SolidColorBrush Color="#7FB4C0DF" Opacity="0.6"/>
+
+                </Border.Background>
+                <Grid>
+                    <Button x:Name="RootPasBut" Content="Enter" VerticalAlignment="Bottom" Margin="75,5,5,5"  Style="{StaticResource ButtonStyle}" Click="EnterRootPass"/>
+                    <TextBox x:Name="RootPasTB"  VerticalAlignment="Bottom" Margin="5,5,5,5" Width="75" Height="20" HorizontalAlignment="Left"  />
+                </Grid>
+            </Border>
+        </Popup>
     </Grid>
 </Page>

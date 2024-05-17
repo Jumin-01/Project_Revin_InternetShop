@@ -45,7 +45,7 @@ namespace Project_Revin_InternetShop.Lists
 
             if (games.Contains(game))
             {
-                throw new InvalidOperationException("The game is already in the library.");
+                throw new InvalidOperationException("The game is already in the catalog.");
             }
 
             games.Add(game);
