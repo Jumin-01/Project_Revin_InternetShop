@@ -22,7 +22,7 @@ namespace Project_Revin_InternetShop.Games
         private string _part;
         private Category _category;
         public  bool Itinstai { get; set; }
-
+        public List<string> GetImages { get { return _images; } }
         public Game() 
         {
             Count++;
@@ -98,11 +98,6 @@ namespace Project_Revin_InternetShop.Games
         }
 
         public void RemoveImage(string image)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<string> GetImages()
         {
             throw new NotImplementedException();
         }
