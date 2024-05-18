@@ -259,13 +259,7 @@ namespace Project_Revin_InternetShop.Shops
             File.WriteAllText(filePath, json);
             Notify?.Invoke($"Shop data saved to JSON file at {filePath}.");
         }
-        public void SaveToJson(string fileName)
-        {
-            string filePath = Path.Combine(Directory.GetCurrentDirectory(), fileName) + ".json";
-            string json = JsonConvert.SerializeObject(this, Formatting.Indented);
-            File.WriteAllText(filePath, json);
-            Notify?.Invoke($"Shop data saved to JSON file at {filePath}.");
-        }
+        
 
         public static Shop LoadFromJson(string fileName)
         {
