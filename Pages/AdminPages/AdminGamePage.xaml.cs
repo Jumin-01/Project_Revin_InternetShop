@@ -63,7 +63,10 @@ namespace Project_Revin_InternetShop.Pages.AdminPages
                     Game editedgame = game;
                     mainWindow.GetShop.EditGame(editGame, ref editedgame);
                     game = editedgame;
-                    mainWindow.GetShop.AddGame(game);
+                    if (mainWindow.GetShop.GetGames.FirstOrDefault(g => g.id == game.id) == null)
+                    {
+                        mainWindow.GetShop.AddGame(game);
+                    }                    
                     mainWindow.GetShop.UpdateCatalog();
                     UpdateData();
                     mainWindow.GetShop.SaveToJson("Shop");
@@ -96,16 +99,8 @@ namespace Project_Revin_InternetShop.Pages.AdminPages
             {
                 game.GetImages.Clear();
                 game.AddImage(strImage[0]);
+                HeadImage.Source = MainWindow.LoadImage(game.GetImages.First());
             }
-            
-           
-            //if (game.GetImages.Count > 0)
-            //{
-            //    game.RemoveImage(game.GetImages.First().ToString());
-            //}
-            UpdateData();
-
-
         }
         private void CategoryCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

@@ -126,9 +126,10 @@ namespace Project_Revin_InternetShop.Shops
             gameToEdit.Publisher = newData.Publisher ?? gameToEdit.Publisher;
             gameToEdit.Description = newData.Description ?? gameToEdit.Description;
             gameToEdit.Rating = newData.Rating >= 0 && newData.Rating <= 5 ? newData.Rating : gameToEdit.Rating;
+            gameToEdit.Version = newData.Version >= 0 && newData.Version <= 99 ? newData.Version : gameToEdit.Version;
             gameToEdit.Price = newData.Price >= 0 ? newData.Price : gameToEdit.Price; // Перевірка на негативну ціну
             gameToEdit.Part = newData.Part ?? gameToEdit.Part;
-            gameToEdit.Category = newData.Category; // Припускаючи, що Category завжди має валідне значення
+            gameToEdit.Category = newData.Category; 
 
             Notify?.Invoke($"Game {gameToEdit.Name} successfully edited.");
             UpdateCatalog();
