@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 using Project_Revin_InternetShop.Enum;
 using Project_Revin_InternetShop.Games;
 using Project_Revin_InternetShop.Lists;
@@ -252,6 +252,13 @@ namespace Project_Revin_InternetShop.Shops
 
         }
 
+        public void SaveToJson(string fileName)
+        {
+            string filePath = Path.Combine(Directory.GetCurrentDirectory(), fileName) + ".json";
+            string json = JsonConvert.SerializeObject(this, Formatting.Indented);
+            File.WriteAllText(filePath, json);
+            Notify?.Invoke($"Shop data saved to JSON file at {filePath}.");
+        }
         public void SaveToJson(string fileName)
         {
             string filePath = Path.Combine(Directory.GetCurrentDirectory(), fileName) + ".json";
